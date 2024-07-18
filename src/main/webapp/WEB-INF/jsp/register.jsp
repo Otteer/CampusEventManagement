@@ -3,7 +3,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Login</title>
+    <meta charset="UTF-8">
+    <title>Register</title>
     <style>
         /* Global Styles */
         body {
@@ -45,7 +46,7 @@
             margin-bottom: 20px;
         }
 
-        input[type="text"], input[type="password"] {
+        input[type="text"], input[type="password"], input[type="email"], select {
             width: 90%;
             padding: 10px;
             margin-bottom: 10px;
@@ -53,7 +54,7 @@
             border-radius: 4px;
         }
 
-        .login-button, .register-button {
+        .register-button, .login-button {
             background-color: #4CAF50;
             border: none;
             color: white;
@@ -66,7 +67,7 @@
             cursor: pointer;
         }
 
-        .register-button {
+        .login-button {
             background-color: #2196F3;
         }
 
@@ -79,20 +80,35 @@
 </head>
 <body>
 <header>
-    <h1>Login</h1>
+    <h1>Register</h1>
 </header>
 <main>
-    <form action="login" method="post">
-        Username: <input type="text" name="username"><br>
-        Password: <input type="password" name="password"><br>
-        <input type="submit" value="Login" class="login-button">
+    <form action="/register" method="post">
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" required><br>
+
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required><br>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required><br>
+
+        <label for="role">Role:</label>
+        <select id="role" name="role" required>
+            <option value="student">Student</option>
+            <option value="admin">Admin</option>
+        </select><br>
+
+        <input type="submit" value="Register" class="register-button">
     </form>
+
     <c:if test="${not empty param.error}">
-        <p class="error-message">${param.error}</p>
+        <p class="error-message">Registration failed. Please try again.</p>
     </c:if>
-    <a href="/register">
-        <button class="register-button">Register</button>
+    <a href="/login">
+        <button class="login-button">Login</button>
     </a>
 </main>
+
 </body>
 </html>

@@ -1,9 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Login</title>
+    <title>Create Event</title>
     <style>
         /* Global Styles */
         body {
@@ -30,7 +32,6 @@
         main {
             padding: 20px;
             display: flex;
-            flex-direction: column;
             justify-content: center;
             align-items: center;
             height: calc(100vh - 120px); /* Adjust the height based on header and footer heights */
@@ -42,18 +43,19 @@
             padding: 20px;
             border-radius: 5px;
             text-align: center;
-            margin-bottom: 20px;
+            width: 50%; /* Increased the width of the form */
         }
 
-        input[type="text"], input[type="password"] {
-            width: 90%;
+        label, input, textarea {
+            display: block;
+            width: 98%;
             padding: 10px;
             margin-bottom: 10px;
             border: 1px solid #ccc;
             border-radius: 4px;
         }
 
-        .login-button, .register-button {
+        input[type="submit"] {
             background-color: #4CAF50;
             border: none;
             color: white;
@@ -66,10 +68,6 @@
             cursor: pointer;
         }
 
-        .register-button {
-            background-color: #2196F3;
-        }
-
         .error-message {
             color: #d11a2a;
             font-weight: bold;
@@ -79,20 +77,29 @@
 </head>
 <body>
 <header>
-    <h1>Login</h1>
+    <h1>Create Event</h1>
 </header>
 <main>
-    <form action="login" method="post">
-        Username: <input type="text" name="username"><br>
-        Password: <input type="password" name="password"><br>
-        <input type="submit" value="Login" class="login-button">
-    </form>
-    <c:if test="${not empty param.error}">
-        <p class="error-message">${param.error}</p>
-    </c:if>
-    <a href="/register">
-        <button class="register-button">Register</button>
-    </a>
+    <form:form action="/event/create" method="post" modelAttribute="event">
+        <form:errors path="*" cssClass="error-message" />
+        <label for="name">Name:</label>
+        <form:input path="name" id="name" />
+        <br>
+
+        <label for="description">Description:</label>
+        <form:textarea path="description" id="description" />
+        <br>
+
+        <label for="startDateTime">Start Date Time:</label>
+        <form:input path="startDateTime" type="datetime-local" id="startDateTime" />
+        <br>
+
+        <label for="endDateTime">End Date Time:</label>
+        <form:input path="endDateTime" type="datetime-local" id="endDateTime" />
+        <br>
+
+        <input type="submit" value="Create Event">
+    </form:form>
 </main>
 </body>
 </html>
