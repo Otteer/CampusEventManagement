@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Login</title>
+    <title>Campus Events</title>
     <style>
         /* Global Styles */
         body {
@@ -79,7 +79,7 @@
 </head>
 <body>
 <header>
-    <h1>Login</h1>
+    <h1>Campus Events</h1>
 </header>
 <main>
     <form action="login" method="post">

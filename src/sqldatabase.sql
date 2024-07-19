@@ -10,6 +10,9 @@ CREATE TABLE users (
                        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
                        updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );
+--additional to users
+ALTER TABLE user
+    ADD COLUMN role VARCHAR(50) NOT NULL DEFAULT 'student';
 
 -- Create the events table
 CREATE TABLE events (

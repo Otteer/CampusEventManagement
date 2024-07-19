@@ -80,7 +80,7 @@
 </head>
 <body>
 <header>
-    <h1>Register</h1>
+    <h1>Campus Events</h1>
 </header>
 <main>
     <form action="/register" method="post">

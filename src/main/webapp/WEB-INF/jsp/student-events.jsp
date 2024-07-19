@@ -73,13 +73,6 @@
             background-color: #d11a2a;
         }
 
-        /* Footer Styles */
-        footer {
-            background-color: #333;
-            color: #f2f2f2;
-            padding: 10px;
-            text-align: center;
-        }
     </style>
 </head>
 <body>
@@ -113,8 +106,5 @@
         </c:forEach>
     </table>
 </main>
-<footer>
-    <p>&copy; 2023 My Web Application</p>
-</footer>
 </body>
 </html>
